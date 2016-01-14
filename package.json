@@ -1,0 +1,18 @@
+{
+  "name": "coderally-nodejs",
+  "version": "1.0.0",
+  "description": "A nodede module for constructing and playing with code-rally AIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.ibm.com:karanran/coderally-nodejs.git"
+  },
+  "keywords": [
+    "code-rally"
+  ],
+  "author": "Karanbir Randhawa <karan.ker@gmail.com>",
+  "license": "ISC"
+}
