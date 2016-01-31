@@ -14,5 +14,9 @@
     "code-rally"
   ],
   "author": "Karanbir Randhawa <karan.ker@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.69.0",
+    "ws": "^1.0.1"
+  }
 }
