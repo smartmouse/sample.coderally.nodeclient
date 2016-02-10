@@ -16,7 +16,9 @@
   "author": "Karanbir Randhawa <karan.ker@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.3.0",
     "request": "^2.69.0",
+    "uuid": "^2.0.1",
     "ws": "^1.0.1"
   }
 }
