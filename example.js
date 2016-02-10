@@ -1,8 +1,8 @@
-var AgentEmitter = require('./lib/agent.js');
+var Agent = require('./index.js');
 
-var agent = new AgentEmitter();
+var myAgent = new Agent();
 
-agent.enterRace({
+myAgent.enterRace({
 	track_id : "0",
 	username : "karan_challenge_na",
 	user_id : "963",
@@ -16,11 +16,11 @@ agent.enterRace({
 	turning : "1" 
 });
 
-agent.on('init', function(ourCar, track) {
+myAgent.on('init', function(ourCar, track) {
 	console.log('init');
 });
 
-agent.on('onRaceStart', function(ourCar) {
+myAgent.on('onRaceStart', function(ourCar) {
 	// Option 1: Set control locally THEN push to server
 	ourCar.setCarControl({
 		accelPercent: 75,
@@ -30,13 +30,13 @@ agent.on('onRaceStart', function(ourCar) {
 
 });
 
-agent.on('onCarCollision', function(ourCar, otherCar) {
+myAgent.on('onCarCollision', function(ourCar, otherCar) {
 	// Option 2: Push directly to server
 	ourCar.pushCarControl({
 		brakePercent: 70
 	});
 });
 
-agent.on('onTimeStep', function(ourCar) {
-	console.log(ourCar);
+myAgent.on('onTimeStep', function(ourCar) {
+	console.log(ourCar.getCarStatus().getStatus());
 });
