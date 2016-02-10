@@ -1,5 +1,5 @@
 {
-  "name": "coderally-nodejs",
+  "name": "coderally-agent",
   "version": "1.0.0",
   "description": "A nodede module for constructing and playing with code-rally AIs",
   "main": "index.js",
