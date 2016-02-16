@@ -43,7 +43,7 @@ const OffTrackAI = {
 
 var prevPosition = null; // (x, y) coordinate
 var currentStrategy = RaceStrategy.RACE;
-var curentCheckpointAI = CheckpointAI.OVERCOMPENSATE;
+var currentCheckpointAI = CheckpointAI.OVERCOMPENSATE;
 var currentOffTrackAI = OffTrackAI.STOP_AND_REALIGN;
 var currentOpponentInProximityAI = OpponentInProximityAI.IGNORE;
 
@@ -53,10 +53,11 @@ myAgent.on('init', function (ourCar, track) {
 });
 
 myAgent.on('onRaceStart', function (ourCar) {
+	console.log("Race is starting");
 	prevPosition = ourCar.getCarStatus().getPosition();
 
 	// Aggressive start
-	var target = AIUtils.getClosestLane(ourCar.getCarStatus().getCheckpoint(), ourCar.getCarStatus().getPosition());
+	var target = AIUtils.getClosestLane(ourCar.getCarStatus().getCheckPoint(), ourCar.getCarStatus().getPosition());
 	ourCar.pushCarControl({
 		carBrakePercent : 0,
 		carAccelPercent : 100,
@@ -74,14 +75,14 @@ myAgent.on('onCheckpointUpdated', function (ourCar, checkpoint) {
 		return;
 	}
 
-	var target = AIUtils.getClosestLane(ourCar.getCarStatus().getCheckpoint(), ourCar.getCarStatus().getPosition());
+	var target = AIUtils.getClosestLane(ourCar.getCarStatus().getCheckPoint(), ourCar.getCarStatus().getPosition());
 
-	if (curentCheckpointAI == CheckpointAI.ACCELERATE) {
+	if (currentCheckpointAI == CheckpointAI.ACCELERATE) {
 		ourCar.pushCarControl({
 			carBrakePercent : 0,
 			carAccelPercent : 100
 		});
-	} else if (curentCheckpointAI == CheckpointAI.UNDERCOMPENSATE) {
+	} else if (currentCheckpointAI == CheckpointAI.UNDERCOMPENSATE) {
 		AIUtils.recalculateHeading(ourCar, 1.33);
 	} else if (currentCheckpointAI == CheckpointAI.OVERCOMPENSATE) {
 		AIUtils.recalculateHeading(ourCar, 0.85);
@@ -93,8 +94,8 @@ myAgent.on('onOffTrack', function (ourCar) {
 
 	if (currentOffTrackAI == OffTrackAI.ACCELERATE) {
 		currentStrategy = RaceStrategy.OFFTRACK;
-		var target = AIUtils.getIntersectionPoint(ourCar.getCarStatus().getCheckpoint(), 
-			ourCar.getCarStatus().getRotation(), ourCar.getCarStatus.getPosition());
+		var target = AIUtils.getIntersectionPoint(ourCar.getCarStatus().getCheckPoint(), 
+			ourCar.getCarStatus().getRotation(), ourCar.getCarStatus().getPosition());
 
 		ourCar.pushCarControl({ 
 			carTarget: target
@@ -102,8 +103,8 @@ myAgent.on('onOffTrack', function (ourCar) {
 		AIUtils.recalculateHeading(ourCar, 0.75);
 	} else if (currentOffTrackAI == OffTrackAI.STOP_AND_REALIGN) {
 		currentStrategy = RaceStrategy.OFFTRACK;
-		var target = AIUtils.getIntersectionPoint(ourCar.getCarStatus().getCheckpoint(), 
-			ourCar.getCarStatus().getRotation(), ourCar.getCarStatus.getPosition());
+		var target = AIUtils.getIntersectionPoint(ourCar.getCarStatus().getCheckPoint(), 
+			ourCar.getCarStatus().getRotation(), ourCar.getCarStatus().getPosition());
 
 		ourCar.pushCarControl({
 			carBrakePercent : 100,
@@ -124,8 +125,8 @@ myAgent.on('onCarCollision', function (ourCar, otherCar) {
 		return; 
 	}
 
-	if (ourCar.getCarControl().getTarget() == otherCar.target) {
-		var target = AIUtils.getAlternativeLane(ourCar.getCarStatus().getCheckpoint(),
+	if (ourCar.getCarControl().getCarTarget() == otherCar.target) {
+		var target = AIUtils.getAlternativeLane(ourCar.getCarStatus().getCheckPoint(),
 			ourCar.getCarStatus().getPosition());
 
 		ourCar.pushCarControl({ 
@@ -167,17 +168,17 @@ myAgent.on('onTimeStep', function (ourCar) {
 
 	if (ourCar != null && ourCar.getCarStatus().isDestroyed()) return;
 
-	console.log("Position ", ourCar.position);
-	console.log("Lap ", ourCar.lap);
-	console.log("Place ", ourCar.place);
+	console.log("Position ", JSON.stringify(ourCar.getCarStatus().getPosition()));
+	console.log("Lap ", JSON.stringify(ourCar.getCarStatus().getLap()));
+	console.log("Place ", JSON.stringify(ourCar.getCarStatus().getPlace()));
 	console.log(); // filler
 
 
 	if (currentStrategy == RaceStrategy.RACE) {
-		var a = getDistanceSquared(prevPosition, ourCar.getCarControl().getTarget());
-		var b = getDistanceSquared(ourCar.getCarStatus().getPosition(), 
-			ourCar.getCarControl().getTarget());
-		var c = getDistanceSquared(prevPosition, ourCar.getCarStatus().getPosition());
+		var a = AIUtils.getDistanceSquared(prevPosition, ourCar.getCarControl().getCarTarget());
+		var b = AIUtils.getDistanceSquared(ourCar.getCarStatus().getPosition(), 
+			ourCar.getCarControl().getCarTarget());
+		var c = AIUtils.getDistanceSquared(prevPosition, ourCar.getCarStatus().getPosition());
 
 		if (a < b || c < 0.1) {
 			AIUtils.recalculateHeading(ourCar, 1);
