@@ -204,3 +204,7 @@ myAgent.on('onStalled', function (ourCar) {
 		carBrakePercent : 0
 	})
 });
+
+myAgent.on('onRaceEnd', function (raceID) {
+	console.log("Race finished. ID: " + raceID);
+});
