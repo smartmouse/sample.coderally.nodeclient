@@ -14,7 +14,8 @@ myAgent.enterRace({
 	weight : "1",
 	armor : "0",
 	traction : "0",
-	turning : "1" 
+	turning : "1",
+	serverURL: 'challenge-na.coderallycloud.com' 
 });
 
 // Agent/Car variables used during race
