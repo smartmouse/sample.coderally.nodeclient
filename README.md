@@ -1,6 +1,6 @@
 # Code-Rally (Node.js Version)
 
-Want to learn the popular Node.js while having fun? Then try the new Node.js version of IBM's Code Rally! Whether you are a complete Node Newbie, or a experienced Node.js veteran, test and hone your skills on the race track!
+Want to learn the popular Node.js while having fun? Then try the new Node.js version of IBM's Code Rally! Whether you are a complete Node Newbie, or an experienced Node.js veteran, test and hone your skills on the race track!
 
 For more information, see the <a target="_blank" href="https://www.ibm.com/developerworks/community/blogs/code-rally/entry/landing?lang=en">Offical Code Rally Blog</a>!
 
@@ -8,21 +8,62 @@ For more information, see the <a target="_blank" href="https://www.ibm.com/devel
 
 There are two ways to get Code Rally (Node.js) running on your machine! Assuming that you have already <a target="_blank" href="https://nodejs.org/en/">Node.js</a> with NPM installed.
 
-1. Use `npm install --save coderally` at your Node application directory
+1. Use `npm install --save coderally-agent` at your Node application directory
 
 2. Clone this GitHub repository directly to your Node application directory with `git clone`
 
-## Usage
+## Code Examples
 
-The Code Rally node module will allow you to access all the features and functions you need to get started! To include the module in your application, simply add `var code_rally = require('code_rally')`. Or you can use the Code Rally CLI tool <i>(future release)</i> to generate a template for you to get started! The module is composed of mainly three parts:
+### Entering a race
 
-* `var Agent = code_rally.agent` - The Agent class is what you will be using to connect to a host server, and send/receive data to the server. As the agent, as an Event Emitter, will allow you to receive race events and formulate an appropriate response to it.
+	var Agent = require('../index.js');
+	var myAgent = new Agent();
 
-* `var Car = code_rally.car` - The Car class is the object abstraction of your car within the race. Upon agent connection to the host server, your Car object will be spawned by the agent on the 'init' event, within the callback functoin. You will set the car's attributes, name, design, and controls, through this object (and its supporting classes).
+	...
 
-* `var Utils = code_rally.utils` - The Utility library provides you with useful functions for spatial/time calculations between race elements, helper functions for class creation, and much more.
+	myAgent.enterRace({
+		track_id : "0",
+		username : "karan_challenge_na",
+		user_id : "963",
+		uniqueUserid : "116650285099720794308", // OPTIONAL IF OAUTH DISABLED ON SERVER
+		file_name : "Testcar",
+		vehicle_type: "car_yellow",
+		accel : "1",
+		weight : "1",
+		armor : "0",
+		traction : "0",
+		turning : "1" 
+	}, 'challenge-na.coderallycloud.com');
 
-The models library can also be accessed through `code_rally.models`, if you wish to directly access all the different model classes for your own purposes. 
+### Implementing a car AI
+
+	var AIUtils = Agent.AIUtils;
+
+	...
+
+	myAgent.on('onRaceStart', function (ourCar) {
+		console.log("Race is starting");
+		prevPosition = ourCar.getCarStatus().getPosition();
+
+		// Aggressive start
+		var target = AIUtils.getClosestLane(ourCar.getCarStatus().getCheckPoint(), ourCar.getCarStatus().getPosition());
+		ourCar.pushCarControl({
+			carBrakePercent : 0,
+			carAccelPercent : 100,
+			carTarget : target
+		})
+
+	});
+
+## Reference
+
+### agent.js
+
+### enterRace(raceObj, serverURI)
+
+### AIUtils.js
+
+#### getClosestLane(checkpoint, position) 
 
 ## Contributing
 
@@ -32,11 +73,14 @@ Currently contributed by IBM Canada's Node Enterprise Team, with technical feedb
 
 * [Jan 2016]
   - Project Kickoff!
+  - Functional design drafted and approved
   - GitHub Repository Created
 
 * [Feb 2016]
   - Designed Code Rally Node Module structure
   - README.md v1.0.0
+  - Entering race functionality implemented 
+  - Websocket support for updating race car in realtime
 
 ## Credits
 
@@ -82,6 +126,10 @@ Karan (S.) Randhawa, Kelvin Chan
  * maintenance of nuclear facilities, mass transit systems, air traffic control
  * systems, weapons systems, or aircraft navigation or communications, or any
  * other activity where program failure could give rise to a material threat of
+ * death or serious personal injury.
+ ******************************************************************************
+</pre>
+rise to a material threat of
  * death or serious personal injury.
  ******************************************************************************
 </pre>
