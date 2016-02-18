@@ -14,8 +14,8 @@ myAgent.enterRace({
 	weight : "1",
 	armor : "0",
 	traction : "0",
-	turning : "1" 
-});
+	turning : "1"
+}, 'challenge-na.coderallycloud.com');
 
 // Agent/Car variables used during race
 const RaceStrategy = {
@@ -203,4 +203,8 @@ myAgent.on('onStalled', function (ourCar) {
 		carAccelPercent : 100,
 		carBrakePercent : 0
 	})
+});
+
+myAgent.on('onRaceEnd', function (raceID) {
+	console.log("Race finished. ID: " + raceID);
 });
