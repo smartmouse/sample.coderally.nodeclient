@@ -128,8 +128,4 @@ Karan (S.) Randhawa, Kelvin Chan
  * other activity where program failure could give rise to a material threat of
  * death or serious personal injury.
  ******************************************************************************
-</pre>
-rise to a material threat of
- * death or serious personal injury.
- ******************************************************************************
-</pre>
+
