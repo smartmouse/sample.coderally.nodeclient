@@ -58,6 +58,7 @@ myAgent.on('onRaceStart', function (ourCar) {
 
 	// Aggressive start
 	var target = AIUtils.getClosestLane(ourCar.getCarStatus().getCheckPoint(), ourCar.getCarStatus().getPosition());
+	console.log('Setting target ' + JSON.stringify(target));
 	ourCar.pushCarControl({
 		carBrakePercent : 0,
 		carAccelPercent : 100,
@@ -80,7 +81,8 @@ myAgent.on('onCheckpointUpdated', function (ourCar, checkpoint) {
 	if (currentCheckpointAI == CheckpointAI.ACCELERATE) {
 		ourCar.pushCarControl({
 			carBrakePercent : 0,
-			carAccelPercent : 100
+			carAccelPercent : 100,
+			carTarget : target
 		});
 	} else if (currentCheckpointAI == CheckpointAI.UNDERCOMPENSATE) {
 		AIUtils.recalculateHeading(ourCar, 1.33);
@@ -171,28 +173,31 @@ myAgent.on('onTimeStep', function (ourCar) {
 	console.log("Position ", JSON.stringify(ourCar.getCarStatus().getPosition()));
 	console.log("Lap ", JSON.stringify(ourCar.getCarStatus().getLap()));
 	console.log("Place ", JSON.stringify(ourCar.getCarStatus().getPlace()));
+	console.log("Acceleration ", JSON.stringify(ourCar.getCarControl().getAccelerationPercent()));
+	console.log("Target ", JSON.stringify(ourCar.getCarControl().getCarTarget()));
+	console.log("Checkpoint ", JSON.stringify(ourCar.getCarStatus().getCheckPoint()));
 	console.log(); // filler
 
 
-	if (currentStrategy == RaceStrategy.RACE) {
-		var a = AIUtils.getDistanceSquared(prevPosition, ourCar.getCarControl().getCarTarget());
-		var b = AIUtils.getDistanceSquared(ourCar.getCarStatus().getPosition(), 
-			ourCar.getCarControl().getCarTarget());
-		var c = AIUtils.getDistanceSquared(prevPosition, ourCar.getCarStatus().getPosition());
+	// if (currentStrategy == RaceStrategy.RACE) {
+	// 	var a = AIUtils.getDistanceSquared(prevPosition, ourCar.getCarControl().getCarTarget());
+	// 	var b = AIUtils.getDistanceSquared(ourCar.getCarStatus().getPosition(), 
+	// 		ourCar.getCarControl().getCarTarget());
+	// 	var c = AIUtils.getDistanceSquared(prevPosition, ourCar.getCarStatus().getPosition());
 
-		if (a < b || c < 0.1) {
-			AIUtils.recalculateHeading(ourCar, 1);
-		}
-	} else if (currentStrategy == RaceStrategy.OFFTRACK) {
-		var normalized_velocity = 1; // TODO: Add logic
-		if (currentOffTrackAI == OffTrackAI.STOP_AND_REALIGN && normalized_velocity < 5) {
-			AIUtils.recalculateHeading(ourCar, 1);
-		}
-	} else if (currentStrategy == RaceStrategy.AVOID) {
-		// No logic yet
-	} else if (currentStrategy == RaceStrategy.ATTACK) {
-		// No logic yet
-	}
+	// 	if (a < b || c < 0.1) {
+	// 		AIUtils.recalculateHeading(ourCar, 1);
+	// 	}
+	// } else if (currentStrategy == RaceStrategy.OFFTRACK) {
+	// 	var normalized_velocity = 1; // TODO: Add logic
+	// 	if (currentOffTrackAI == OffTrackAI.STOP_AND_REALIGN && normalized_velocity < 5) {
+	// 		AIUtils.recalculateHeading(ourCar, 1);
+	// 	}
+	// } else if (currentStrategy == RaceStrategy.AVOID) {
+	// 	// No logic yet
+	// } else if (currentStrategy == RaceStrategy.ATTACK) {
+	// 	// No logic yet
+	// }
 
 	prevPosition = ourCar.getCarStatus().getPosition();
 });
