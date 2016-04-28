@@ -1,6 +1,10 @@
 # Code-Rally (Node.js Version)
 
+```
 Want to learn or practice Node.js while having fun? Want to polish your knowledge of AIs and see the results first-hand? Then try the new Node.js package of IBM's Code Rally! Whether you are a complete Node Newbie, or an experienced Node veteran, test and hone your skills on the race track!
+```
+
+This repository is a portion of the Code Rally platform, used for building racing AIs and competing them against other developers in the cloud. The main purpose of this repository is to allow Node developers to construct their AIs in the language most familiar to them - JavaScript! It is supplemented by the Java-powered Code Rally server that powers the show and the Eclipse plugin which similarly lets developers build AIs using the Java language. 
 
 For more information, see the <a target="_blank" href="https://www.ibm.com/developerworks/community/blogs/code-rally/entry/landing?lang=en">Offical Code Rally Blog</a>!
 
@@ -71,7 +75,7 @@ We have code examples at hand to show your sample AIs in the `examples` folder.
 
 ## Contributing
 
-Currently contributed by IBM Canada's Node Enterprise Team, with technical feedback and support by the Code Rally Team. If you do make a PR 
+Currently contributed by IBM Canada's Node Enterprise Team with technical feedback and support by the Code Rally Team. Full credits for all support we've received can be seen below.
 
 ## Other Features
 
@@ -115,7 +119,7 @@ Will be included in next release, by using the Node's `zlib` library we were abl
 
 ## Credits
 
-Karan (S.) Randhawa, Kelvin Chan, Fady Abdel Malik, Ivy Ho
+Karan (S.) Randhawa, Kelvin Chan, Fady Abdel Malik, Ivy Ho, Jonathan West, Tom Banks, Steven Hung
 
 ## License
 
