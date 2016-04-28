@@ -4,6 +4,16 @@ Want to learn or practice Node.js while having fun? Want to polish your knowledg
 
 For more information, see the <a target="_blank" href="https://www.ibm.com/developerworks/community/blogs/code-rally/entry/landing?lang=en">Offical Code Rally Blog</a>!
 
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Entering a Race](#entering-a-race)
+3. [Implementing a Car AI](#implementing-a-car-ai)
+4. [Examples](#examples)
+5. [Contributing](#contributing)
+6. [Other/Upcoming Features](#other-features)
+7. [History](#history)
+
 ## Installation
 
 There are two ways to get Code Rally (Node.js) running on your machine! Assuming that you have already <a target="_blank" href="https://nodejs.org/en/">Node.js</a> with NPM installed.
@@ -14,7 +24,7 @@ There are two ways to get Code Rally (Node.js) running on your machine! Assuming
 
 ## Getting Started
 
-### Entering a race
+### Entering a Race
 
 	var Agent = require('../index.js');
 	var myAgent = new Agent();
@@ -35,7 +45,7 @@ There are two ways to get Code Rally (Node.js) running on your machine! Assuming
 		turning : "1" 
 	}, 'challenge-na.coderallycloud.com');
 
-### Implementing a car AI
+### Implementing a Car AI
 
 	var AIUtils = Agent.AIUtils;
 
