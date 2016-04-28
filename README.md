@@ -1,4 +1,4 @@
-# Code-Rally (Node.js Version)
+# Code-Rally (Node.js Version) 
 
 ```
 Want to learn or practice Node.js while having fun? Want to polish your knowledge of AIs and see the results first-hand? Then try the new Node.js package of IBM's Code Rally! Whether you are a complete Node Newbie, or an experienced Node veteran, test and hone your skills on the race track!
