@@ -1,20 +1,20 @@
 {
   "name": "coderally-agent",
   "version": "1.0.0",
-  "description": "A nodede module for constructing and playing with code-rally AIs",
+  "description": "A node module for constructing an AI and entering into IBM's Code Rally cloud racing platform",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node examples/default.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.ibm.com:karanran/coderally-nodejs.git"
+    "url": "git@github.com:WASdev/sample.coderally.nodeclient.git"
   },
   "keywords": [
     "code-rally"
   ],
   "author": "Karanbir Randhawa <karan.ker@gmail.com>",
-  "license": "ISC",
+  "license": "Apache v2",
   "dependencies": {
     "lodash": "^4.3.0",
     "mathjs": "^2.7.0",
