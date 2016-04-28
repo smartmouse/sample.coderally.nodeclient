@@ -1,8 +1,6 @@
 # Code-Rally (Node.js Version) 
 
-```
 Want to learn or practice Node.js while having fun? Want to polish your knowledge of AIs and see the results first-hand? Then try the new Node.js package of IBM's Code Rally! Whether you are a complete Node Newbie, or an experienced Node veteran, test and hone your skills on the race track!
-```
 
 This repository is a portion of the Code Rally platform, used for building racing AIs and competing them against other developers in the cloud. The main purpose of this repository is to allow Node developers to construct their AIs in the language most familiar to them - JavaScript! It is supplemented by the Java-powered Code Rally server that powers the show and the Eclipse plugin which similarly lets developers build AIs using the Java language. 
 
