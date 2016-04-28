@@ -1,20 +1,30 @@
 # Code-Rally (Node.js Version)
 
-Want to learn the popular Node.js while having fun? Then try the new Node.js version of IBM's Code Rally! Whether you are a complete Node Newbie, or an experienced Node.js veteran, test and hone your skills on the race track!
+Want to learn or practice Node.js while having fun? Want to polish your knowledge of AIs and see the results first-hand? Then try the new Node.js package of IBM's Code Rally! Whether you are a complete Node Newbie, or an experienced Node veteran, test and hone your skills on the race track!
 
 For more information, see the <a target="_blank" href="https://www.ibm.com/developerworks/community/blogs/code-rally/entry/landing?lang=en">Offical Code Rally Blog</a>!
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Entering a Race](#entering-a-race)
+3. [Implementing a Car AI](#implementing-a-car-ai)
+4. [Examples](#examples)
+5. [Contributing](#contributing)
+6. [Other/Upcoming Features](#other-features)
+7. [History](#history)
 
 ## Installation
 
 There are two ways to get Code Rally (Node.js) running on your machine! Assuming that you have already <a target="_blank" href="https://nodejs.org/en/">Node.js</a> with NPM installed.
 
-1. Use `npm install --save coderally-agent` at your Node application directory
+1. Use `npm install --save coderally-agent` at your Node application directory. Then `require('coderally-agent')`.
 
-2. Clone this GitHub repository directly to your Node application directory with `git clone`
+2. Clone this GitHub repository directly to your development directory. Then `require('./coderally-agent/index.js')`.
 
-## Code Examples
+## Getting Started
 
-### Entering a race
+### Entering a Race
 
 	var Agent = require('../index.js');
 	var myAgent = new Agent();
@@ -35,7 +45,7 @@ There are two ways to get Code Rally (Node.js) running on your machine! Assuming
 		turning : "1" 
 	}, 'challenge-na.coderallycloud.com');
 
-### Implementing a car AI
+### Implementing a Car AI
 
 	var AIUtils = Agent.AIUtils;
 
@@ -55,19 +65,31 @@ There are two ways to get Code Rally (Node.js) running on your machine! Assuming
 
 	});
 
-## Reference
+### Examples
 
-### agent.js
-
-### enterRace(raceObj, serverURI)
-
-### AIUtils.js
-
-#### getClosestLane(checkpoint, position) 
+We have code examples at hand to show your sample AIs in the `examples` folder.
 
 ## Contributing
 
-Currently contributed by IBM Canada's Node Enterprise Team, with technical feedback and support by the Code Rally Team.
+Currently contributed by IBM Canada's Node Enterprise Team, with technical feedback and support by the Code Rally Team. If you do make a PR 
+
+## Other Features
+
+### Interactive Code Editor
+
+Written as an Express web application that utilizes this library. This feature allows you to write your code into the browser and enter your agent as a racer. Contains linting and allows for viewing logs during the race. Currently moved to a seperate repository that is undergoing open source process. Here are some previews:
+
+![Authenticate](pictures/CodeRally1.PNG) ![Code Edit](pictures/CodeRally2.PNG)
+
+### Video Viewing of Race
+
+Implemented and awaiting some fixes. Once you finish a race we will forward you to a URL which will let you view a video of your race. Here's a sneak peak at this feature: 
+
+![Race Video](pictures/CodeRally3.PNG)
+
+### WebSocket compression
+
+Will be included in next release, by using the Node's `zlib` library we were able to deflate and inflate the outgoing and incoming messages accordingly. This will allow us to minimize the size of the messages that are sent between the Node client and the Code Rally server through their WebSocket connection. 
 
 ## History
 
@@ -77,19 +99,28 @@ Currently contributed by IBM Canada's Node Enterprise Team, with technical feedb
   - GitHub Repository Created
 
 * [Feb 2016]
-  - Designed Code Rally Node Module structure
+  - Implemented Code Rally Node Module structure
   - README.md v1.0.0
   - Entering race functionality implemented 
   - Websocket support for updating race car in realtime
 
+* [Mar 2016]
+  - Built interactive code editor
+  - Added video viewing for race
+  - Started implementation of WebSocket Compression
+
+* [Apr 2016]
+  - Build 1.0.0 is open sourced and released
+  - Build 1.0.1 undergoing release process.
+
 ## Credits
 
-Karan (S.) Randhawa, Kelvin Chan
+Karan (S.) Randhawa, Kelvin Chan, Fady Abdel Malik, Ivy Ho
 
 ## License
 
 <pre>
-*******************************************************************************
+/*******************************************************************************
  * [Restricted Materials of IBM] - Use restricted, please refer to the "SOURCE
  * COMPONENTS AND SAMPLE MATERIALS" and the "PROHIBITED USES" terms and
  * conditions in the IBM International License Agreement for non warranted IBM
@@ -97,7 +128,7 @@ Karan (S.) Randhawa, Kelvin Chan
  * 
  * Code Rally
  * 
- * (c) Copyright IBM Corporation 2012.
+ * (c) Copyright IBM Corporation 2016.
  * 
  * U.S. Government Users Restricted Rights:  Use, duplication or disclosure
  * restricted by GSA ADP Schedule Contract with IBM Corp. 
@@ -127,5 +158,5 @@ Karan (S.) Randhawa, Kelvin Chan
  * systems, weapons systems, or aircraft navigation or communications, or any
  * other activity where program failure could give rise to a material threat of
  * death or serious personal injury.
- ******************************************************************************
+ ******************************************************************************/
 </pre>
