@@ -20,7 +20,7 @@ For more information, see the <a target="_blank" href="https://www.ibm.com/devel
 
 There are two ways to get Code Rally (Node.js) running on your machine! Assuming that you have already <a target="_blank" href="https://nodejs.org/en/">Node.js</a> with NPM installed.
 
-1. Use `npm install --save coderally-agent` at your Node application directory. Then `require('coderally-agent')`.
+1. Use `npm install --save coderally-agent` at your Node application directory. Then `require('coderally-agent')`. **This option is currently not available while we undergo our npm publish process. It is however, the intended way to utilize code rally.**
 
 2. Clone this GitHub repository directly to your development directory. Then `require('./coderally-agent/index.js')`.
 
