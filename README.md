@@ -75,7 +75,7 @@ We have code examples at hand to show your sample AIs in the `examples` folder.
 
 Currently contributed by IBM Canada's Node Enterprise Team with technical feedback and support by the Code Rally Team. Full credits for all support we've received can be seen below.
 
-## Other Features
+## Upcoming Features
 
 ### Interactive Code Editor
 
